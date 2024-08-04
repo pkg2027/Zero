@@ -1,0 +1,251 @@
+#!/bin/bash
+#################################################
+#Author: PRAVEEN KUMAR GAUTAM
+#Date : 23/JULY/2024
+#Version: 2.0
+#################################################
+#
+#Objective: INSTALLING ALL THE REQUIRED TOOLs ON EC2 FOR THE PROJECT
+#APROX: 10 GB STORAGE SPACE WILL BE CONSUMED
+#
+#MAVEN TOOL
+#GIT TOOL
+#PYTHON 3
+#JAVA VERSIONS: 8/11/17/21
+#DOCKER
+#TRIVY
+#JENKINS
+#SONARQUBE
+#JFROG
+#
+set -e
+#
+echo "----------------------------------------------------"
+#UPDATING AND UPGRADING SYSTEM FOR TOOL INSTALLATION
+echo "UPDATING AND UPGRADING SYSTEM FOR TOOL INSTALLATION"
+echo "----------------------------------------------------"
+#COMMANDS
+sudo apt update && sudo apt upgrade -y
+echo " "
+echo " "
+echo " "
+echo " "
+	echo "----------------------------------------------------"
+	#TOOL 1: MAVEN
+	echo "INSTALL MAVEN"
+	echo "----------------------------------------------------"
+	#COMMANDS
+	sudo apt install maven -y
+	mvn -version
+	echo " "
+	echo " "
+	echo " "
+	echo " "
+echo "----------------------------------------------------"
+#UPDATING AND UPGRADING SYSTEM FOR TOOL INSTALLATION
+echo "UPDATING AND UPGRADING SYSTEM FOR TOOL INSTALLATION"
+echo "----------------------------------------------------"
+#COMMANDS
+sudo apt update && sudo apt upgrade -y
+echo " "
+echo " "
+echo " "
+echo " "
+	echo "----------------------------------------------------" 
+	#TOOL 2: GIT 
+	echo "INSTALL GIT"
+	echo "----------------------------------------------------"
+	#COMMANDS
+	sudo apt install git -y
+	git version
+	echo " "
+	echo " "
+	echo " "
+	echo " "
+echo "----------------------------------------------------"
+#UPDATING AND UPGRADING SYSTEM FOR TOOL INSTALLATION
+echo "UPDATING AND UPGRADING SYSTEM FOR TOOL INSTALLATION"
+echo "----------------------------------------------------"
+#COMMANDS
+sudo apt update && sudo apt upgrade -y
+echo " "
+echo " "
+echo " "
+echo " "
+	echo "----------------------------------------------------"
+        #TOOL 3: PYTHON
+        echo "INSTALL PYTHON"
+        echo "----------------------------------------------------"
+        #COMMANDS
+	sudo apt install python3 -y
+	python3 --version
+        echo " "
+        echo " "
+        echo " "
+        echo " "
+echo "----------------------------------------------------"
+#UPDATING AND UPGRADING SYSTEM FOR TOOL INSTALLATION
+echo "UPDATING AND UPGRADING SYSTEM FOR TOOL INSTALLATION"
+echo "----------------------------------------------------"
+#COMMANDS
+sudo apt update && sudo apt upgrade -y
+echo " "
+echo " "
+echo " "
+echo " "
+	echo "----------------------------------------------------"
+        #TOOL 4: JAVA
+        echo "INSTALL JAVA: 8/11/17/21"
+        echo "----------------------------------------------------"
+        #COMMANDS
+		#SWITCHING JAVA VERSION: sudo update-alternatives --config java
+	sudo apt install default-jre -y
+	sudo apt-get install openjdk-8-jdk -y
+	sudo apt-get install openjdk-11-jdk -y
+	sudo apt-get install openjdk-17-jdk -y
+	java -version
+        echo " "
+        echo " "
+        echo " "
+        echo " "
+echo "----------------------------------------------------"
+#UPDATING AND UPGRADING SYSTEM FOR TOOL INSTALLATION
+echo "UPDATING AND UPGRADING SYSTEM FOR TOOL INSTALLATION"
+echo "----------------------------------------------------"
+#COMMANDS
+sudo apt update && sudo apt upgrade -y
+echo " "
+echo " "
+echo " "
+echo " "
+	echo "----------------------------------------------------" 
+        #TOOL 5: DOCKER
+        echo "INSTALL DOCKER"
+        echo "----------------------------------------------------"
+        #COMMANDS
+	sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+	sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" -y
+	sudo apt update -y
+	apt-cache policy docker-ce
+	sudo apt install docker-ce -y
+	#sudo systemctl status docker
+	sudo chmod 777 /var/run/docker.sock
+        echo " "
+        echo " "
+        echo " "
+        echo " "
+echo "----------------------------------------------------"
+#UPDATING AND UPGRADING SYSTEM FOR TOOL INSTALLATION
+echo "UPDATING AND UPGRADING SYSTEM FOR TOOL INSTALLATION"
+echo "----------------------------------------------------"
+#COMMANDS
+sudo apt update && sudo apt upgrade -y
+echo " "
+echo " "
+echo " "
+echo " "
+	echo "----------------------------------------------------" 
+        #TOOL 6: TRIVY
+        echo "INSTALL TRIVY"
+        echo "----------------------------------------------------"
+        #COMMANDS
+	sudo apt-get install wget apt-transport-https gnupg lsb-release
+	wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+	echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+	sudo apt-get update
+	sudo apt-get install trivy -y
+        echo " "
+        echo " "
+        echo " "
+        echo " "
+echo "----------------------------------------------------"
+#UPDATING AND UPGRADING SYSTEM FOR TOOL INSTALLATION
+echo "UPDATING AND UPGRADING SYSTEM FOR TOOL INSTALLATION"
+echo "----------------------------------------------------"
+#COMMANDS
+sudo apt update && sudo apt upgrade -y
+echo " "
+echo " "
+echo " "
+echo " "
+	echo "----------------------------------------------------" 
+        #TOOL 7: JENKINS
+        echo "INSTALL JENKINS"
+        echo "----------------------------------------------------"
+        #COMMANDS
+	curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+	echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+	sudo apt-get update -y 
+	sudo apt-get install jenkins -y
+        echo " "
+        echo " "
+        echo " "
+        echo " "
+echo "----------------------------------------------------"
+#UPDATING AND UPGRADING SYSTEM FOR TOOL INSTALLATION
+echo "UPDATING AND UPGRADING SYSTEM FOR TOOL INSTALLATION"
+echo "----------------------------------------------------"
+#COMMANDS
+sudo apt update && sudo apt upgrade -y
+echo " "
+echo " "
+echo " "
+echo " "
+	echo "----------------------------------------------------" 
+        #TOOL 8: SONARQUBE
+        echo "INSTALL SONARQUBE"
+        echo "----------------------------------------------------"
+        #COMMANDS
+	docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
+        echo " "
+        echo " "
+        echo " "
+        echo " "
+echo "----------------------------------------------------"
+#UPDATING AND UPGRADING SYSTEM FOR TOOL INSTALLATION
+echo "UPDATING AND UPGRADING SYSTEM FOR TOOL INSTALLATION"
+echo "----------------------------------------------------"
+#COMMANDS
+sudo apt update && sudo apt upgrade -y
+echo " "
+echo " "
+echo " "
+echo " "
+	echo "----------------------------------------------------" 
+        #TOOL 9: JFROG
+        echo "INSTALL JFROG"
+        echo "----------------------------------------------------"
+        #COMMANDS
+	sudo mkdir -p $JFROG_HOME/artifactory/var/etc/
+	cd $JFROG_HOME/artifactory/var/etc/
+	touch ./system.yaml
+	chown -R 1030:1030 $JFROG_HOME/artifactory/var
+	chmod -R 777 $JFROG_HOME/artifactory/var
+	docker run --name artifactory -v $JFROG_HOME/artifactory/var/:/var/opt/jfrog/artifactory -d -p 8081:8081 -p 8082:8082 releases-docker.jfrog.io/jfrog/artifactory-oss:7.77.5
+        echo " "
+        echo " "
+        echo " "
+        echo " "
+echo "----------------------------------------------------"
+#UPDATING AND UPGRADING SYSTEM FOR TOOL INSTALLATION
+echo "UPDATING AND UPGRADING SYSTEM FOR TOOL INSTALLATION"
+echo "----------------------------------------------------"
+#COMMANDS
+cd /etc/apt/
+sudo cp trusted.gpg trusted.gpg.d
+sudo apt update && sudo apt upgrade -y
+echo " "
+echo " "
+echo " "
+echo " "
+#Active listning PORTS
+ss -antpl
+echo " "
+echo " "
+echo " "
+echo " "
+docker ps -a
